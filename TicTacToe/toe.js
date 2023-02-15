@@ -37,4 +37,7 @@ function handleTurn(event) {
     let idx = squares.findIndex(function(square) {
         return square === event.target;
     });
+    board[idx] = turn;
+    console.log(board);
+    
 };
