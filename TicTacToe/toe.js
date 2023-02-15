@@ -20,3 +20,12 @@ function render() {
     console.log(mark, index);
 });
 };
+
+function init() {
+    board = [
+        '', '', '',
+        '', '', '',
+        '', '', ''
+    ];
+    render();
+};
