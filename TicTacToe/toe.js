@@ -38,6 +38,8 @@ function handleTurn(event) {
         return square === event.target;
     });
     board[idx] = turn;
-    console.log(board);
+    turn = turn === 'X' ? 'O' : 'X';
+    render();
+    console.log(board); //checking for connection
     
 };
