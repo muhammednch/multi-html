@@ -22,6 +22,7 @@ const squares = Array.from(document.querySelectorAll('#board div'));
 const messages = document.querySelector('h2');
 /*----- event listeners -----*/
 document.getElementById('board').addEventListener('click', handleTurn);
+document.getElementById('reset-button').addEventListener('click', init);
 /*----- functions -----*/
 function init() {
     board = [
@@ -64,5 +65,6 @@ function getWinner() {
     winningCombos.forEach(function(combo, index) {
         if (board[combo[0]] && board[combo[0]] === board[combo[1]] &&   board[combo[0]] === board[combo[2]]) winner = board[combo[0]];
     });
-    return winner;
+    return winner ? winner : board.includes('') ? null : 'T';
+    
 };
