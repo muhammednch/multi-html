@@ -19,9 +19,9 @@ let win;
 
 /*----- cached element references -----*/
 const squares = Array.from(document.querySelectorAll('#board div'));
-const messages = document.querySelector('h2');
 /*----- event listeners -----*/
 document.getElementById('board').addEventListener('click', handleTurn);
+const messages = document.querySelector('h2');
 document.getElementById('reset-button').addEventListener('click', init);
 /*----- functions -----*/
 function init() {
@@ -54,17 +54,16 @@ function handleTurn(event) {
         return square === event.target;
     });
     board[idx] = turn;
-    win = getWinner();
-    turn = turn === 'X' ? 'O' : 'X';
-    render();
     console.log(board); //checking for connection
+    win = getWinner();
+    render();
+
 };
 
 function getWinner() {
     let winner = null;
     winningCombos.forEach(function(combo, index) {
-        if (board[combo[0]] && board[combo[0]] === board[combo[1]] &&   board[combo[0]] === board[combo[2]]) winner = board[combo[0]];
-    });
-    return winner ? winner : board.includes('') ? null : 'T';
-    
+        if (board[combo[0]] && board[combo[0]] === board[combo[1]] && board[combo[0]] === board[combo[2]]) winner = board[combo[0]];
+        });
+        return winner ? winner : board.includes('') ? null : 'T';
 };
