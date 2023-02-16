@@ -27,12 +27,14 @@ document.getElementById('reset-button').addEventListener('click', init);
 
 
 function render() {
-    board.forEach(function(mark, index){
-    console.log(mark, index);
+    board.forEach(function(mark, index) {
+    //this moves the value of the board item into the squares[idx]
     squares[index].textContent = mark;
-});
-messages.textContent = `It's ${turn}'s turn!`;
-};
+    });
+    messages.textContent = win === 'T' ? `That's a tie, folks. Go home!!` : win ? `${win} wins the game!` : `It's ${turn}'s turn!`;
+    };
+
+init();
 
 function init() {
     board = [
