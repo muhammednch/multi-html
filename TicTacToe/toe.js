@@ -24,14 +24,7 @@ document.getElementById('board').addEventListener('click', handleTurn);
 const messages = document.querySelector('h2');
 document.getElementById('reset-button').addEventListener('click', init);
 /*----- functions -----*/
-function init() {
-    board = [
-        '', '', '',
-        '', '', '',
-        '', '', ''
-    ];
-};
-init();
+
 
 function render() {
     board.forEach(function(mark, index){
@@ -43,27 +36,29 @@ messages.textContent = `It's ${turn}'s turn!`;
 
 function init() {
     board = [
-        '', '', '',
-        '', '', '',
-        '', '', ''
+    '', '', '',
+    '', '', '',
+    '', '', ''
     ];
     render();
 };
-function handleTurn(event) {
+function handleTurn() {
     let idx = squares.findIndex(function(square) {
         return square === event.target;
     });
     board[idx] = turn;
-    console.log(board); //checking for connection
+    turn = turn === 'X' ? 'O' : 'X';
     win = getWinner();
     render();
-
 };
 
 function getWinner() {
     let winner = null;
-    winningCombos.forEach(function(combo, index) {
-        if (board[combo[0]] && board[combo[0]] === board[combo[1]] && board[combo[0]] === board[combo[2]]) winner = board[combo[0]];
+    winningCombos.forEach((combo, index) => {
+        if (board[combo[0]] && board[combo[0]] === board[combo[1]] && board[combo[0]] === board[combo[2]]) {
+            winner = board[combo[0]];
+        }
         });
-        return winner ? winner : board.includes('') ? null : 'T';
+    return winner ? winner : board.includes('') ? null : 'T';
+    
 };
