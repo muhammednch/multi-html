@@ -15,7 +15,7 @@ const winningCombos = [
 let board;
 let turn = 'X';
 let win;
-win = board[0] && board[0] === board[1] && board[0] === board[2] ? board[0] : null;
+// win = board[0] && board[0] === board[1] && board[0] === board[2] ? board[0] : null; 
 
 /*----- cached element references -----*/
 const squares = Array.from(document.querySelectorAll('#board div'));
